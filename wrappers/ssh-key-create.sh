@@ -1,3 +1,4 @@
+#!/bin/sh
 printf "\n  Type your e-mail:\n\n"
 read email
 
