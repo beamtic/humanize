@@ -9,13 +9,11 @@
 #  |======================================|
 #  |=======Dependencies===================|
 #  |======================================|
-if [ ! -x "$(command -v python)" ]
-then
-  printf 'This script requires Python to be installed. Exiting.'
-  # Exit with 2 = Missing keyword or command, or permission problem...
-  # See also: http://www.tldp.org/LDP/abs/html/exitcodes.html
-  # A zero code indicates success, while a value higher than zero indicates an error
-  exit 2
+# This assumes that "is-command-available.sh" is available on the system
+is-command-available.sh "python"
+if [ ! $? -eq 0 ]; then
+    # Exit with the exit code of the script we just ran
+    exit
 fi
 
 #  |======================================|
@@ -33,18 +31,27 @@ unfold_path () {
 #  |>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
 
 printf "  The destination is the location that you want the link to point to (not the location of the link file).\n"
-printf "  Type the destination File Path below:\n\n"
+printf "  Type the destination File Path below:\e[1m\n"
 # Read the user input, while allowing the user to use tab to complete paths (-e)
-read -e stringInput
+read -e userInput
+printf "\e[m"
 unfold_path
 destinationFilePath=$unfoldedPath
+printf "\n  Destination is: $destinationFilePath\n"
 
-printf "\n  Type The File Path for the location of the link,"
-printf "\n  including the file name of the link:\n\n"
-read -e stringInput
+printf "\n  Where should the link be located (I.e.: ~/Desktop/Name-of-link):\e[1m\n"
+read -e userInput
+printf "\n \e[m"
 
 unfold_path
 sourceFilePath=$unfoldedPath
+printf "\n  Link location is: $sourceFilePath\n"
 
 # Run the ln command with the options for symbolic link creation
 ln -s -T "$destinationFilePath" "$sourceFilePath"
+
+if [ $? -eq 0 ]; then
+    printf "\n Link created..\n"
+else
+    printf "\n Failed to create link..\n"
+fi
