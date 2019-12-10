@@ -48,5 +48,3 @@ sourceFilePath=$unfoldedPath
 
 # Run the ln command with the options for symbolic link creation
 ln -s -T "$destinationFilePath" "$sourceFilePath"
-
-exit

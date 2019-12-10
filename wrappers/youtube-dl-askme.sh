@@ -20,6 +20,3 @@ elif [ $videoAudio = 'V' ]
 then
   youtube-dl $resourceURL 
 fi
-
-# Exit with status of last executed command
-exit
