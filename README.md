@@ -1,9 +1,9 @@
 # humanize
 humanize
 
-A small, but growing, collection of Linux command wrappers to make the terminal more userfriendly.
+A small collection of Linux command wrappers to make the terminal more user friendly.
 
-The idea is to create a more user-friendly, dialogue, based user experience when using common system commands.
+The idea is to create a more user-friendly, dialogue based, user experience when using common system commands.
 
 # How to use wrapper scripts from Humanize
 Running a humanize wrapper script will prompt the user for input, and give clear instructions as of what to do.
@@ -41,7 +41,7 @@ While safe solutions might exist in pure bash, for the sanity of other people wh
 Bash is useful to run system commands in order, and basic conditionals, but it is brutal when it comes to more complex stuff, including tilde expansion, some conditional execution, loops and reguler expression use with sed. Please avoid making too complex logic in bash scripts.
 
 # Issues with bash
-In bash, even writing a simple if statement can be a nightmare to someone unfamilier with the syntax. Comparing numbers seem to be plain broken in some cases (bash variables are untyped), and when we compare strings contained in variables, we need to remember to use double quotes areound the variables.
+In bash, even writing a simple if statement can be a nightmare to someone unfamilier with the syntax. Comparing numbers seem to be plain broken in some cases (bash variables are untyped), and when we compare strings contained in variables, we need to remember to use double quotes around the variables.
 
 I.e: 
 ```
@@ -50,7 +50,7 @@ I.e:
     printf '\n  The variables matched!\n\n'
   fi
 ```
-Note that even the **space** characters is needed for the _i block_ to work. If you forgot a space, the statement would be broken. Now, compare this insanity to the syntax in your favorite scripting language, in my case this is PHP:
+Note that even the **space** characters is needed for the _if block_ to work. If you forgot a space, the statement would be broken. Now, compare this insanity to the syntax in your favorite scripting language, in my case this is PHP:
 
 ```
   if ($some_var == $other_var ) {
